@@ -1,9 +1,10 @@
-const Vue = require('vue')
-module.exports = function createApp (context) {
+const Vue = require('vue');
+
+module.exports = function createApp(context) {
   return new Vue({
-    data: {
-      url: context.url
+    data:{
+      url:context.url
     },
-    template: `<div>访问的 URL 是： {{ url }}</div>`
+    template:`<div>访问的 URL 是： {{ url }}</div>`
   })
-}
+};
