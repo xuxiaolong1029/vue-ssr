@@ -8,8 +8,6 @@ export default context => {
 
     router.onReady(() => {
       const matchedComponents = router.getMatchedComponents();
-
-      console.log(context.url)
       console.log(matchedComponents)
 
       if (!matchedComponents.length) {
