@@ -4,10 +4,14 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon server/server.js",
-    "start": "webpack-dev-server --open",
-    "build:client": "webpack --config config/webpack.client.config.js",
-    "build:server": "webpack --config config/webpack.server.config.js"
+    "dev:client": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
+    "dev:server": "cross-env NODE_ENV=development nodemon server/server.js",
+    "test:client": "cross-env NODE_ENV=testing webpack-dev-server --open --hot",
+    "test:server": "cross-env NODE_ENV=testing nodemon server/server.js",
+    "prod:client": "cross-env NODE_ENV=production webpack-dev-server --open --hot",
+    "prod:server": "cross-env NODE_ENV=production nodemon server/server.js",
+    "build:client": "cross-env NODE_ENV=production webpack --config config/webpack.client.config.js",
+    "build:server": "cross-env NODE_ENV=production webpack --config config/webpack.server.config.js"
   },
   "dependencies": {
     "koa": "^2.11.0",
@@ -25,6 +29,7 @@
     "babel-loader": "^8.0.6",
     "babel-plugin-dynamic-import-webpack": "^1.1.0",
     "copy-webpack-plugin": "^5.0.5",
+    "cross-env": "^6.0.3",
     "css-loader": "^3.2.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^4.2.0",

@@ -4,6 +4,7 @@
     <p>Component</p>
     <h2>异步Ajax数据：</h2>
     <span>{{ msg }}</span>
+    <img src="./img/img1.jpg" alt="">
   </div>
 </template>
 

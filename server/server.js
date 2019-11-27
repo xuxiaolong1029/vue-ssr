@@ -44,7 +44,7 @@ backendApp.listen(3000, () => {
 // 前端Server
 frontendApp.use(serve(path.resolve(__dirname, '../dist')));
 
-frontendRouter.get('/index', (ctx, next) => {
+frontendRouter.get('*', (ctx, next) => {
   let html = fs.readFileSync(path.resolve(__dirname, '../dist/index.html'), 'utf-8');
   ctx.type = 'html';
   ctx.status = 200;
