@@ -1,8 +1,10 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Bar from '../components/Bar.vue';
-import Foo from '../components/Foo.vue';
-import Login from '../components/login.vue';
+import Index from '../views/index.vue';
+import OTC from '../views/otc.vue';
+import Person from '../views/person.vue';
+import Login from '../views/login.vue';
+
 Vue.use(Router);
 const ENV = process.env.NODE_ENV;
 function createRouter() {
@@ -11,19 +13,19 @@ function createRouter() {
     routes : [
       {
         path:'/',
+        component: Index
+      },
+      {
+        path:'/login',
         component: Login
       },
       {
-        path:'/Login',
-        component: Login
+        path: '/otc',
+        component: OTC
       },
       {
-        path: '/bar',
-        component: Bar
-      },
-      {
-        path: '/foo',
-        component: Foo
+        path: '/person',
+        component: Person
       }
     ]
   });

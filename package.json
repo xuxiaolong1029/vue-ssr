@@ -4,14 +4,14 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev:client": "cross-env NODE_ENV=development webpack-dev-server --hot",
+    "dev:client": "cross-env NODE_ENV=development webpack-dev-server --inline --hot",
     "dev:server": "cross-env NODE_ENV=development nodemon server/server.js",
     "test:client": "cross-env NODE_ENV=testing webpack-dev-server --hot",
     "test:server": "cross-env NODE_ENV=testing nodemon server/server.js",
     "prod:client": "cross-env NODE_ENV=production webpack-dev-server --hot",
     "prod:server": "cross-env NODE_ENV=production nodemon server/server.js",
-    "build:client": "cross-env NODE_ENV=production webpack --config config/webpack.client.config.js",
-    "build:server": "cross-env NODE_ENV=production webpack --config config/webpack.server.config.js"
+    "build:client": "cross-env NODE_ENV=production webpack --config config/webpack.client.config.js --progress --hide-modules",
+    "build:server": "cross-env NODE_ENV=production webpack --config config/webpack.server.config.js --progress --hide-modules"
   },
   "dependencies": {
     "koa": "^2.11.0",
@@ -37,6 +37,8 @@
     "html-webpack-plugin": "^3.2.0",
     "http-proxy-middleware": "^0.20.0",
     "koa2-connect": "^1.0.2",
+    "less": "^3.10.3",
+    "less-loader": "^5.0.0",
     "open-browser-webpack-plugin": "^0.0.5",
     "postcss": "^7.0.23",
     "postcss-loader": "^3.0.0",
