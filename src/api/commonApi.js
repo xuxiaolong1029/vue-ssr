@@ -19,5 +19,5 @@ export const getQueryIndicatorList = () =>
   fetch.fetch("/quot/queryIndicatorList", "", "get");
 //获取用户信息
 export const getUserInfo = () => fetch.fetch("/users/userInfo", "", "get");
-
+// 逐笔成交
 
