@@ -1,16 +1,21 @@
 import Vue from 'vue';
-import createStore from './store/store.js';
-import createRouter from './router';
 import App from './App.vue';
+import createStore from './store/store';
+import createRouter from './router';
+import {sync} from 'vuex-router-sync' // 把当VueRouter状态同步到Vuex中
 
-export function createApp() {
+export function createApp(ssrContext) {
   const store = createStore();
   const router = createRouter();
+  // 同步路由状态到store中
+  sync(store, router);
+
   const app = new Vue({
     router,
     store,
+    ssrContext,
     render: h => h(App)
   });
 
-  return { app, store, router, App };
+  return { app, store, router };
 }

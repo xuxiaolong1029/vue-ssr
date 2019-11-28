@@ -3,6 +3,8 @@ const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const OpenBrowserPlugin = require('open-browser-webpack-plugin'); //自动打开浏览器插件
+const URl = "http://10.1.1.61:8090";
 module.exports ={
   mode: process.env.NODE_ENV,
   entry: './src/entry-client.js',
@@ -11,7 +13,8 @@ module.exports ={
     rules: [
       {
         test: /\.js$/,
-        use: 'babel-loader'
+        exclude: /node_modules/,
+        use: ["babel-loader"]
       },
       {
         test: /\.less$/,
@@ -44,18 +47,33 @@ module.exports ={
       'vue$': 'vue/dist/vue.esm.js'
     }
   },
-  plugins: [
-    new VueLoaderPlugin(),
-    new HtmlWebpackPlugin({template: './src/index.html'}),
-    new ExtractTextPlugin("styles.css"),
-    new webpack.DefinePlugin({
-      "process.env.NODE_ENV" : (JSON.stringify(process.env.NODE_ENV))
-    })
-  ],
-
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
     publicPath:'/'
-  }
+  },
+  devServer:{
+    historyApiFallback: true,
+    hot: true,
+    inline: true,
+    contentBase: "./src",
+    port:9999,
+    proxy: {
+      "/common": {
+        target: URl, // 接口的域名
+        secure: false, // 如果是https接口，需要配置这个参数
+        changeOrigin: true // 如果接口跨域，需要进行这个参数配置
+      },
+    }
+  },
+  plugins: [
+    new VueLoaderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({template: './src/index.html'}),
+    new ExtractTextPlugin("styles.css"),
+    new webpack.DefinePlugin({
+      "process.env.NODE_ENV" : (JSON.stringify(process.env.NODE_ENV))
+    }),
+    new OpenBrowserPlugin({ url: 'http://localhost:9999' })
+  ]
 };
