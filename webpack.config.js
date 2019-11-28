@@ -4,7 +4,8 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin'); //自动打开浏览器插件
-const URl = "http://10.1.1.61:8090";
+//const URl = "http://10.1.1.61:8090";
+const URL = "https://www.citex.co.kr";
 module.exports ={
   mode: process.env.NODE_ENV,
   entry: './src/entry-client.js',

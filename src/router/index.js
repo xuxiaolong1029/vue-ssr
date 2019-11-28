@@ -4,9 +4,8 @@ import Bar from '../components/Bar.vue';
 import Foo from '../components/Foo.vue';
 import Login from '../components/login.vue';
 Vue.use(Router);
-
+const ENV = process.env.NODE_ENV;
 function createRouter() {
-  const ENV = process.env.NODE_ENV;
   const router = new Router({
     mode: ENV==='production'?'history':'hash',
     routes : [

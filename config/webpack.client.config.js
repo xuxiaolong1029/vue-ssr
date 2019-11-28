@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueSSRClientPlugin = require('vue-server-renderer/client-plugin');
@@ -11,6 +12,9 @@ module.exports = merge(base, {
 
   plugins: [
     new VueSSRClientPlugin(),
+    new webpack.DefinePlugin({
+      "process.env.NODE_ENV" : (JSON.stringify(process.env.NODE_ENV))
+    }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../src/index.html'),
       filename: 'index.html'

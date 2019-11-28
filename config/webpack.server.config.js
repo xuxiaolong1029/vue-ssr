@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const merge = require('webpack-merge');
 const nodeExternals = require('webpack-node-externals');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -18,6 +19,9 @@ module.exports = merge(base, {
   },
   plugins: [
     new VueSSRServerPlugin(),   // 这个要放到第一个写，否则 CopyWebpackPlugin 不起作用，原因还没查清楚
+    new webpack.DefinePlugin({
+      "process.env.NODE_ENV" : (JSON.stringify(process.env.NODE_ENV))
+    }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../src/index.ssr.html'),
       filename: 'index.ssr.html',
