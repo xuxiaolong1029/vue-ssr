@@ -2,7 +2,7 @@ import { createApp } from './app.js';
 
 export default context => {
   return new Promise((resolve, reject) => {
-    const { app, store, router, App } = createApp();
+    const { app, store, router } = createApp();
 
     router.push(context.url);
 
