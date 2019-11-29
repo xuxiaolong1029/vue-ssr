@@ -23,14 +23,14 @@ const renderer = createBundleRenderer(serverBundle, {
 // 后端Server
 backendApp.use(serve(path.resolve(__dirname, '../dist')));
 // 代理兼容封装
-const proxy = function (context, options) {
+const proxy = function (vm, options) {
   if (typeof options === 'string') {
     options = {
       target: options
     }
   }
   return async function (ctx, next) {
-    await koaConnect(httpProxyMiddleware(context, options))(ctx, next)
+    await koaConnect(httpProxyMiddleware(vm, options))(ctx, next)
   }
 };
 const URL = 'https://www.citex.co.kr';
@@ -48,19 +48,19 @@ const proxyTable = {
     changeOrigin: true // 如果接口跨域，需要进行这个参数配置
   }
 };
-Object.keys(proxyTable).map(context => {
-  const options = proxyTable[context];
+Object.keys(proxyTable).map(vm => {
+  const options = proxyTable[vm];
   // 使用代理
-  backendRouter.use(proxy(context, options))
+  backendRouter.use(proxy(vm, options))
 });
 backendRouter.get('*', (ctx, next) => {
-  let head = {
+  const context = {
     title: 'ssr-vue',
     keywords: '服务端渲染',
     description: '关于vue服务端渲染',
     url: ctx.url
   };
-  const ssrStream = renderer.renderToStream(head);
+  const ssrStream = renderer.renderToStream(context);
   ctx.status = 200;
   ctx.type = 'html';
   ctx.body = ssrStream;

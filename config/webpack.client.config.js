@@ -13,7 +13,10 @@ module.exports = merge(base, {
   plugins: [
     new VueSSRClientPlugin(),
     new webpack.DefinePlugin({
-      "process.env.NODE_ENV" : (JSON.stringify(process.env.NODE_ENV))
+      'process.env':{
+        NODE_ENV:(JSON.stringify(process.env.NODE_ENV)),
+        VUE_ENV:'"client"'
+      }
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../src/index.html'),

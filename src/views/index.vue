@@ -5,13 +5,14 @@
 </template>
 
 <script>
-    import {titleMixin} from '../title.mixin'
     export default {
-        mixins: [titleMixin],
-        title () {
-            return this.item.title
-        },
-        name: "home"
+        head () {
+            return{
+                title:'',
+                keywords:'',
+                description:''
+            }
+        }
     }
 </script>
 
