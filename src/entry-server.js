@@ -14,15 +14,17 @@ export default context => {
 
       Promise.all(matchedComponents.map(component => {
         if (component.asyncData) {
-          return component.asyncData({ store });
+          return component.asyncData({ 
+            store,
+            router:router.currentRoute
+           });
         }
       })).then(() => {
         // 当使用 template 时，context.state 将作为 window.__INITIAL_STATE__ 状态，自动嵌入到最终的 HTML 中
         context.state = store.state;
-
         // 返回根组件
         resolve(app);
-      });
+      }).catch(reject);
     }, reject);
   });
 }

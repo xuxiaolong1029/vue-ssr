@@ -8,10 +8,11 @@ import headMixin from './head.mixin'
 Vue.mixin(headMixin)
 
 export function createApp(ssrContext) {
+  console.log(ssrContext)
   const store = createStore();
   const router = createRouter();
   // 同步路由状态到store中
-  sync(store, router);
+  sync(store,router);
 
   const app = new Vue({
     router,
