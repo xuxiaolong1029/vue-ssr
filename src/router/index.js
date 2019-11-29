@@ -1,9 +1,5 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Index from '../views/index.vue';
-import OTC from '../views/otc.vue';
-import Person from '../views/person.vue';
-import Login from '../views/login.vue';
 Vue.use(Router);
 const ENV = process.env.NODE_ENV;
 
@@ -13,16 +9,16 @@ function createRouter() {
     routes:[
       {
         path:'/',
-        component: Index
+        component:() => import('../views/index.vue')
       },{
         path:'/login',
-        component: Login
+        component:() => import('../views/login.vue')
       },{
         path: '/otc',
-        component: OTC
+        component:() => import('../views/otc.vue')
       },{
         path: '/person',
-        component: Person
+        component: () => import('../views/person.vue')
       }
     ]
   });

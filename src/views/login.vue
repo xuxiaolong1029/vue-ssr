@@ -20,17 +20,17 @@
         methods:{
             getTickTrade(){
                 getQueryIndicatorList().then(data => {
-                    console.log(data)
+                   // console.log(data)
                 })
             },
             getQueryCurrencyData(){
                 getQueryCurrency().then(data => {
-                    console.log(data)
+                  //  console.log(data)
                 })
             },
             getQueryContractData() {
                 getQueryContract().then(data => {
-                    console.log(data)
+                   // console.log(data)
                 })
             },
         }
