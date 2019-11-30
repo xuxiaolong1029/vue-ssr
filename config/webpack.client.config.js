@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueSSRClientPlugin = require('vue-server-renderer/client-plugin');
 const base = require('./webpack.base.config');
 
-module.exports = merge(base, {
+module.exports = merge(base,{
   entry: {
     client: path.resolve(__dirname, '../src/entry-client.js')
   },
@@ -13,10 +13,8 @@ module.exports = merge(base, {
   plugins: [
     new VueSSRClientPlugin(),
     new webpack.DefinePlugin({
-      'process.env':{
-        NODE_ENV:(JSON.stringify(process.env.NODE_ENV)),
-        VUE_ENV:'"client"'
-      }
+      'process.env.NODE_ENV':JSON.stringify(process.env.NODE_ENV || 'development'),
+      'process.env.VUE_ENV': '"client"'
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../src/index.html'),

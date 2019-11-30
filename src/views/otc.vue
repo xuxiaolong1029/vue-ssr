@@ -4,18 +4,22 @@
     <p>Component</p>
     <h2>异步Ajax数据：</h2>
     <span>{{ bar }}</span>
-    <img src="./img/img1.jpg" width="200" alt=""/>
+    <img src="../assets/img1.jpg" width="200" alt=""/>
   </div>
 </template>
 
 <script>
   import { mapState } from "vuex";
-  /*const fetchInitialData = ({ store }) => {
-    return store.dispatch('fetchBar')
-  };*/
   export default {
+    head () {
+      return{
+        title:' | OTC',
+        author:'徐小笼',
+        keywords:'citex交易所,citex exchange',
+        description:'支持比特币（BTC）/莱特币（LTC）/以太坊（ETH）等多种数字货币交易，高速撮合引擎、全方位资金安全保障及极速充提体验，为您的交易保驾护航.'
+      }
+    },
     asyncData({ store,route }) {
-      //const { dispatch } = store
       return store.dispatch('getExchangeCoins')
     },
     methods: {

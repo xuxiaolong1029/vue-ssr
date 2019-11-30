@@ -31,5 +31,28 @@ router.onReady(() => {
             next()
         }).catch(next)
     });
+    if(window.__serverRenderError){
+        feCompatibleRende(currentRoute);
+    }
     app.$mount('#app')
 });
+function feCompatibleRende(route){
+    let matched = router.getMatchedComponents(route);
+    console.log('前端兼容渲染执行');
+    Promise.all(matched.map(c => {
+        if (c.preFetch) {
+            return c.preFetch({
+                store,route,
+                req:{
+                    headers:{
+                        cookie: document.cookie
+                    }
+                }
+            })
+        }
+    })).then(()=>{
+        console.log('ok')
+    }).catch((e)=>{
+        console.error(e)
+    })
+}

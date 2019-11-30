@@ -13,7 +13,7 @@ export default context => {
       }
       Promise.all(matchedComponents.map(component => {
         if (component.asyncData) {
-          return component.asyncData({ 
+          return component.asyncData({
             store,
             router:router.currentRoute
            });
@@ -23,7 +23,11 @@ export default context => {
         context.state = store.state;
         // 返回根组件
         resolve(app);
-      }).catch(reject);
+      }).catch(err =>{
+        console.log('renderer error','entry-server',err);
+        context.serverError = true;
+        resolve(app)
+      });
     }, reject);
   });
 }

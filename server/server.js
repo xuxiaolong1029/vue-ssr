@@ -67,8 +67,8 @@ backendRouter.get('*', (ctx, next) => {
 });
 backendApp.use(backendRouter.routes()).use(backendRouter.allowedMethods());
 
-backendApp.listen(3000, () => {
-  console.log('服务器端渲染地址： http://localhost:3000');
+backendApp.listen(1001, () => {
+  console.log('服务器端渲染地址： http://localhost:1001');
 });
 // 前端Server
 frontendApp.use(serve(path.resolve(__dirname, '../dist')));

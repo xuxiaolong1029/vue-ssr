@@ -20,10 +20,8 @@ module.exports = merge(base, {
   plugins: [
     new VueSSRServerPlugin(),   // 这个要放到第一个写，否则 CopyWebpackPlugin 不起作用，原因还没查清楚
     new webpack.DefinePlugin({
-      'process.env':{
-        NODE_ENV:(JSON.stringify(process.env.NODE_ENV)),
-        VUE_ENV:'"server"'
-      }
+      'process.env.NODE_ENV':JSON.stringify(process.env.NODE_ENV || 'development'),
+      'process.env.VUE_ENV': '"server"'
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../src/index.ssr.html'),

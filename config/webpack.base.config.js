@@ -6,7 +6,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue']
   },
-
+  stats: { children: false },
   output: {
     path: path.resolve(__dirname, '../dist'),
     publicPath: '/',
@@ -29,12 +29,14 @@ module.exports = {
       },
       {
         test: /\.(jpg|jpeg|png|gif|svg)$/,
-        use: {
-          loader: 'url-loader',
-          options: {
-            limit: 10000    // 10Kb
-          }
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]?[hash]'
         }
+      },
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        loader: 'url-loader'
       }
     ]
   },
