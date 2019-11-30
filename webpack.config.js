@@ -18,12 +18,8 @@ module.exports ={
         use: ["babel-loader"]
       },
       {
-        test: /\.less$/,
-        use: ["style-loader", "css-loader", "less-loader"]
-      },
-      {
-        test: /\.css$/,
-        use: ['vue-style-loader', 'css-loader', 'postcss-loader']
+        test: /\.(less|css)$/,
+        use: ['vue-style-loader', 'css-loader','less-loader','postcss-loader']
       },
       {
         test: /\.(jpg|jpeg|png|gif|svg)$/,
