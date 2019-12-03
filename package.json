@@ -4,8 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev:client": "cross-env NODE_ENV=development webpack-dev-server --inline --hot",
-    "dev:server": "cross-env NODE_ENV=development nodemon server/server.js",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --hot",
     "test:client": "cross-env NODE_ENV=testing webpack-dev-server --hot",
     "test:server": "cross-env NODE_ENV=testing nodemon server/server.js",
     "prod:client": "cross-env NODE_ENV=production webpack-dev-server --hot",
@@ -43,6 +42,7 @@
     "open-browser-webpack-plugin": "^0.0.5",
     "postcss": "^7.0.23",
     "postcss-loader": "^3.0.0",
+    "serve-favicon": "^2.5.0",
     "style-loader": "^1.0.0",
     "url-loader": "^2.2.0",
     "vue-loader": "^15.7.2",

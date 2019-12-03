@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import App from './App.vue';
-import './reset.less';
+import './assets/reset.less';
 import createStore from './store/store';
 import createRouter from './router';
 import {sync} from 'vuex-router-sync' // 把当VueRouter状态同步到Vuex中

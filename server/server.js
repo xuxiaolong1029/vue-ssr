@@ -33,8 +33,8 @@ const proxy = function (vm, options) {
     await koaConnect(httpProxyMiddleware(vm, options))(ctx, next)
   }
 };
-const URL = 'https://www.citex.co.kr';
-//const URL = 'http://10.1.1.61:8090';
+//const URL = 'https://www.citex.co.kr';
+const URL = 'http://10.1.1.61:8090';
 // 代理配置
 const proxyTable = {
   "/common": {
