@@ -1,11 +1,12 @@
 import Vue from 'vue';
-import Router from 'vue-router';
-Vue.use(Router);
+import VueRouter from 'vue-router';
+Vue.use(VueRouter);
 const ENV = process.env.NODE_ENV;
 
-function createRouter() {
-  return new Router({
+const router = new VueRouter({
     mode: ENV==='production'?'history':'hash',
+    linkActiveClass: 'active',
+    base: __dirname,
     routes:[
       {
         path:'/',
@@ -22,6 +23,5 @@ function createRouter() {
       }
     ]
   });
-}
 
-export default createRouter;
+export default router

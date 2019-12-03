@@ -39,6 +39,7 @@
     "koa2-connect": "^1.0.2",
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
+    "nprogress": "^0.2.0",
     "open-browser-webpack-plugin": "^0.0.5",
     "postcss": "^7.0.23",
     "postcss-loader": "^3.0.0",
