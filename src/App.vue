@@ -17,7 +17,7 @@
       return{
         menu:[
           {path:'/',name:'首页'},
-          {path:'/otc',name:'otc'},
+          {path:'/otc',name:'详情'},
           {path:'/person',name:'个人中心'},
           {path:'/login',name:'登录'}
         ]
@@ -33,13 +33,16 @@
     .menu{
       height: 50px;line-height: 50px;background-color: chocolate;color: #fff;
       ul{
-        width:1200px;margin: auto;cursor: pointer;
-        display: flex;justify-content:space-between;
+        margin: auto;cursor: pointer;
+        display: flex;justify-content:space-around;
+        li{
+          min-width: 80px;text-align: center
+        }
       }
 
     }
     .page{
-      width: 1200px;margin: auto;
+      width:100%;margin: auto;
     }
   }
 

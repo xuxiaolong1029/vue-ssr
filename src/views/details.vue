@@ -1,9 +1,6 @@
 <template>
-  <div class="bar">
-    <h1 @click="onHandleClick">Bar</h1>
-    <p>Component</p>
-    <h2>异步Ajax数据：</h2>
-    <span>{{ bar }}</span>
+  <div>
+    <h1 @click="onHandleClick">详情页面</h1>
     <img src="../assets/img1.jpg" width="200" alt=""/>
   </div>
 </template>
@@ -45,8 +42,6 @@
   }
 </script>
 
-<style>
-.bar {
-  background: bisque;
-}
+<style scoped lang="less">
+
 </style>

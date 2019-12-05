@@ -4,38 +4,11 @@ const static = require('koa-static');
 const path = require('path');
 const fs = require('fs');
 const favicon = require('koa-favicon');
-const httpProxyMiddleware = require('http-proxy-middleware');
-const koaConnect = require('koa2-connect');
 const createBundleRenderer = require('vue-server-renderer').createBundleRenderer;
+const {proxy,proxyTable} = require('./proxy');//引入代理
 const ssrApp = new Koa();
 const ssrRouter = new Router();
-// 代理兼容封装
-const proxy = function (vm, options) {
-  if (typeof options === 'string') {
-    options = {
-      target: options
-    }
-  }
-  return async function (ctx, next) {
-    await koaConnect(httpProxyMiddleware(vm, options))(ctx, next)
-  }
-};
 
-//const URL = 'https://www.citex.co.kr';
-const URL = 'http://10.1.1.61:8090';
-// 代理配置
-const proxyTable = {
-  "/common": {
-    target:URL, // 接口的域名
-    secure:false, // 如果是https接口，需要配置这个参数
-    changeOrigin: true // 如果接口跨域，需要进行这个参数配置
-  },
-  "/quot":{
-    target:URL, // 接口的域名
-    secure:false, // 如果是https接口，需要配置这个参数
-    changeOrigin: true // 如果接口跨域，需要进行这个参数配置
-  }
-};
 Object.keys(proxyTable).map(vm => {
   const options = proxyTable[vm];
   // 使用代理

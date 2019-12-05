@@ -4,7 +4,7 @@ Vue.use(VueRouter);
 const ENV = process.env.NODE_ENV;
 import Index from '../views/index.vue'
 import Login from '../views/login.vue'
-import Otc from '../views/otc.vue'
+import Details from '../views/details.vue'
 import Person from '../views/person.vue'
 
 const router = new VueRouter({
@@ -19,8 +19,8 @@ const router = new VueRouter({
         path:'/login',
         component:Login
       },{
-        path: '/otc',
-        component:Otc
+        path: '/details',
+        component:Details
       },{
         path: '/person',
         component:Person

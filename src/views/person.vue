@@ -1,12 +1,12 @@
 <template>
-  <div class="foo">
-    <h1 @click="onHandleClick">Foo</h1>
-    <p>Component</p>
+  <div>
+   个人中心
   </div>
 </template>
 
 <script>
-export default {head () {
+export default {
+  head () {
     return{
       title:' | 个人',
       author:'徐小笼',
@@ -15,15 +15,11 @@ export default {head () {
     }
   },
   methods: {
-    onHandleClick() {
-      alert('foo');
-    }
+    
   },
 }
 </script>
 
-<style>
-.foo {
-  background: yellowgreen;
-}
+<style scoped lang="less">
+
 </style>
