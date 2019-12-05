@@ -48,8 +48,8 @@ module.exports = merge(base, {
     }),
     new CopyWebpackPlugin([
       {
-        from:'./server',
-        to:'./server'
+        from: path.resolve(__dirname, '../server'),
+        to:path.resolve(__dirname, '../dist')
       }
     ])
   ]
