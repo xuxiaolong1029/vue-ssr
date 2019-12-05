@@ -35,7 +35,7 @@ module.exports = merge(base, {
     new ExtractTextPlugin('assets/style.css'),
     new VueSSRServerPlugin(),   // 这个要放到第一个写，否则 CopyWebpackPlugin 不起作用，原因还没查清楚
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV':JSON.stringify(process.env.NODE_ENV || 'development'),
+      'process.env.NODE_ENV':JSON.stringify(process.env.NODE_ENV || 'production'),
       'process.env.VUE_ENV': '"server"'
     }),
     new HtmlWebpackPlugin({
