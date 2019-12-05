@@ -5,6 +5,7 @@ const nodeExternals = require('webpack-node-externals');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueSSRServerPlugin = require('vue-server-renderer/server-plugin');
 const base = require('./webpack.base.config');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = merge(base, {
   target: 'node',
@@ -12,12 +13,25 @@ module.exports = merge(base, {
   devtool: '#source-map',
   entry: {
     server: path.resolve(__dirname, '../src/entry-server.js')
+    //client: path.resolve(__dirname, '../src/entry-client.js')
   },
   externals: [nodeExternals()],
   output: {
     libraryTarget: 'commonjs2'
   },
+  module: {
+    rules: [
+      {
+        test: /\.(less|css)$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'less-loader']
+        })
+      }
+    ]
+  },
   plugins: [
+    new ExtractTextPlugin('assets/style.css'),
     new VueSSRServerPlugin(),   // 这个要放到第一个写，否则 CopyWebpackPlugin 不起作用，原因还没查清楚
     new webpack.DefinePlugin({
       'process.env.NODE_ENV':JSON.stringify(process.env.NODE_ENV || 'development'),

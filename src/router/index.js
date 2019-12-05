@@ -2,6 +2,10 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 const ENV = process.env.NODE_ENV;
+import Index from '../views/index.vue'
+import Login from '../views/login.vue'
+import Otc from '../views/otc.vue'
+import Person from '../views/person.vue'
 
 const router = new VueRouter({
     mode: ENV==='production'?'history':'hash',
@@ -10,16 +14,16 @@ const router = new VueRouter({
     routes:[
       {
         path:'/',
-        component:() => import('../views/index.vue')
+        component:Index
       },{
         path:'/login',
-        component:() => import('../views/login.vue')
+        component:Login
       },{
         path: '/otc',
-        component:() => import('../views/otc.vue')
+        component:Otc
       },{
         path: '/person',
-        component: () => import('../views/person.vue')
+        component:Person
       }
     ]
   });

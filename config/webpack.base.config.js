@@ -1,6 +1,5 @@
 const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   mode: process.env.NODE_ENV,
@@ -25,13 +24,6 @@ module.exports = {
         use: 'babel-loader'
       },
       {
-        test: /\.(less|css)$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: ['css-loader', 'less-loader']
-        })
-      },
-      {
         test: /\.(jpg|jpeg|png|gif|svg)$/,
         loader: 'file-loader',
         options: {
@@ -46,7 +38,6 @@ module.exports = {
   },
 
   plugins: [
-    new ExtractTextPlugin('assets/style.css'),
     new VueLoaderPlugin()
   ]
 };

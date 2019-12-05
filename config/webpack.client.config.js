@@ -9,7 +9,14 @@ module.exports = merge(base,{
   entry: {
     client: path.resolve(__dirname, '../src/entry-client.js')
   },
-
+  module: {
+    rules: [
+      {
+        test: /\.(css|less)$/,
+        use: ['vue-style-loader', 'css-loader','less-loader', 'postcss-loader']
+      }
+    ]
+  },
   plugins: [
     new VueSSRClientPlugin(),
     new webpack.DefinePlugin({
@@ -17,8 +24,8 @@ module.exports = merge(base,{
       'process.env.VUE_ENV': '"client"'
     }),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, '../src/index.html'),
-      filename: 'index.html'
+      template: path.resolve(__dirname, process.env.NODE_ENV!=='production'?'../src/index.html':'../src/index.ssr.html'),
+      filename: process.env.NODE_ENV!=='production'?'index.html':'index.ssr.html'
     })
   ]
 });

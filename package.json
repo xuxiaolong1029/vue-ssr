@@ -5,8 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --hot",
-    "test:client": "cross-env NODE_ENV=testing webpack-dev-server --hot",
-    "test:server": "cross-env NODE_ENV=testing nodemon server/server.js",
+    "test": "cross-env NODE_ENV=development webpack-dev-server --hot",
     "prod:client": "cross-env NODE_ENV=production webpack-dev-server --hot",
     "prod:server": "cross-env NODE_ENV=production nodemon server/server.js",
     "build": "rimraf dist && npm run build:client && npm run build:server",
@@ -36,6 +35,7 @@
     "file-loader": "^4.2.0",
     "html-webpack-plugin": "^3.2.0",
     "http-proxy-middleware": "^0.20.0",
+    "koa-favicon": "^2.0.1",
     "koa2-connect": "^1.0.2",
     "less": "^3.10.3",
     "less-loader": "^5.0.0",

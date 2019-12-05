@@ -84,7 +84,10 @@ module.exports ={
   plugins: [
     new VueLoaderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new HtmlWebpackPlugin({template: './src/index.html'}),
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+      favicon: './src/icon.ico'
+    }),
     new ExtractTextPlugin("styles.css"),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV':JSON.stringify(process.env.NODE_ENV || 'development'),
