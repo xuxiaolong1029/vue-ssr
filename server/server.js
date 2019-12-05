@@ -8,10 +8,7 @@ const httpProxyMiddleware = require('http-proxy-middleware');
 const koaConnect = require('koa2-connect');
 const createBundleRenderer = require('vue-server-renderer').createBundleRenderer;
 const ssrApp = new Koa();
-const clientApp = new Koa();
 const ssrRouter = new Router();
-const clientRouter = new Router();
-
 // 代理兼容封装
 const proxy = function (vm, options) {
   if (typeof options === 'string') {
@@ -74,6 +71,8 @@ ssrApp.listen(1001, () => {
   console.log('服务器端渲染地址： http://localhost:1001');
 });
 if(process.env.NODE_ENV!=='production'){
+  const clientApp = new Koa();
+  const clientRouter = new Router();
   // 前端Server
   const clientTemplate = fs.readFileSync(path.resolve(__dirname, '../dist/index.html'), 'utf-8');
   clientApp.use(favicon(path.resolve(__dirname, '../src/icon.ico')))
