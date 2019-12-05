@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueSSRServerPlugin = require('vue-server-renderer/server-plugin');
 const base = require('./webpack.base.config');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = merge(base, {
   target: 'node',
@@ -44,6 +45,12 @@ module.exports = merge(base, {
         js: 'client.bundle.js'
       },
       excludeChunks: ['server']
-    })
+    }),
+    new CopyWebpackPlugin([
+      {
+        from:'./server',
+        to:'./server'
+      }
+    ])
   ]
 });

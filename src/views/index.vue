@@ -1,6 +1,7 @@
 <template>
     <div>
         首页
+        <img src="../assets/img/img2.png" width="200" alt=""/>
     </div>
 </template>
 

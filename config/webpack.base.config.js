@@ -27,7 +27,9 @@ module.exports = {
         test: /\.(jpg|jpeg|png|gif|svg)$/,
         loader: 'file-loader',
         options: {
-          name: '[name].[ext]?[hash]'
+          name: '[name].[ext]?[hash]',
+          limit:100000,//限制图片大小 <= 100kb 进行base64编码（小于100kb打包进js文件）--测试时根据图片的大小调整
+          outputPath:'image'//设置输出文件夹名称，这个文件夹会与主入口文件在同一路径下
         }
       },
       {

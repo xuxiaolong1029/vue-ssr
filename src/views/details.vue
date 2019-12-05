@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 @click="onHandleClick">详情页面</h1>
-    <img src="../assets/img1.jpg" width="200" alt=""/>
+    <img src="../assets/img/img1.png" width="200" alt=""/>
   </div>
 </template>
 
