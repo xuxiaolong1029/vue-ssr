@@ -17,7 +17,7 @@
       return{
         menu:[
           {path:'/',name:'首页'},
-          {path:'/otc',name:'详情'},
+          {path:'/details',name:'详情'},
           {path:'/person',name:'个人中心'},
           {path:'/login',name:'登录'}
         ]
