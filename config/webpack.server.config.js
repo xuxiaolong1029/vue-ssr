@@ -48,9 +48,15 @@ module.exports = merge(base, {
     }),
     new CopyWebpackPlugin([
       {
+        //拷贝server文件夹到打包dist文件夹中
         from: path.resolve(__dirname, '../server'),
         to:path.resolve(__dirname, '../dist')
-      }
+      },
+      {
+        //拷贝package文件到打包dist文件夹中
+        from: path.resolve(__dirname, '../package.json'),
+        to:path.resolve(__dirname, '../dist')
+      },
     ])
   ]
 });
