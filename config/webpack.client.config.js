@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin')
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueSSRClientPlugin = require('vue-server-renderer/client-plugin');
 const base = require('./webpack.base.config');
@@ -26,7 +26,7 @@ module.exports = merge(base,{
       'process.env.VUE_ENV': '"client"'
     }),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, process.env.NODE_ENV!=='production'?'../src/index.html':'../src/index.ssr.html'),
+      template: path.resolve(__dirname, process.env.NODE_ENV!=='production'?'../public/index.html':'../public/index.ssr.html'),
       filename: process.env.NODE_ENV!=='production'?'index.html':'index.ssr.html'
     })
   ]

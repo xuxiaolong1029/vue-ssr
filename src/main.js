@@ -4,7 +4,7 @@ import './assets/reset.less';
 import createStore from './store/store';
 import router from './router';
 import {sync} from 'vuex-router-sync' // 把当VueRouter状态同步到Vuex中
-import headMixin from './head.mixin'
+import headMixin from '../public/head.mixin'
 Vue.mixin(headMixin);
 
 export function createApp() {

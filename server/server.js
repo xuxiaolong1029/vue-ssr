@@ -18,7 +18,7 @@ Object.keys(proxyTable).map(vm => {
 const serverBundle = require(path.resolve(__dirname, '../dist/vue-ssr-server-bundle.json'));
 const clientManifest = require(path.resolve(__dirname, '../dist/vue-ssr-client-manifest.json'));
 const ssrTemplate = fs.readFileSync(path.resolve(__dirname, '../dist/index.ssr.html'), 'utf-8');
-ssrRouter.use(favicon(path.resolve(__dirname, '../src/icon.ico')))
+ssrRouter.use(favicon(path.resolve(__dirname, '../public/icon.ico')));
 ssrApp.use(static(path.resolve(__dirname, '../dist')));
 ssrRouter.get('*', (ctx, next) => {
   const context = {
@@ -48,7 +48,7 @@ if(process.env.NODE_ENV!=='production'){
   const clientRouter = new Router();
   // 前端Server
   const clientTemplate = fs.readFileSync(path.resolve(__dirname, '../dist/index.html'), 'utf-8');
-  clientApp.use(favicon(path.resolve(__dirname, '../src/icon.ico')))
+  clientApp.use(favicon(path.resolve(__dirname, '../public/icon.ico')));
   clientApp.use(static(path.resolve(__dirname, '../dist')));
   clientRouter.get('*', (ctx, next) => {
     ctx.type = 'html';

@@ -39,7 +39,7 @@ module.exports = merge(base, {
       'process.env.VUE_ENV': '"server"'
     }),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, '../src/index.ssr.html'),
+      template: path.resolve(__dirname, '../public/index.ssr.html'),
       filename: 'index.ssr.html',
       files: {
         js: 'client.bundle.js'

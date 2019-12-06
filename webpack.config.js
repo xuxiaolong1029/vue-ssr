@@ -85,8 +85,8 @@ module.exports ={
     new VueLoaderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      template: './src/index.html',
-      favicon: './src/icon.ico'
+      template: './public/index.html',
+      favicon: './public/icon.ico'
     }),
     new ExtractTextPlugin("styles.css"),
     new webpack.DefinePlugin({
