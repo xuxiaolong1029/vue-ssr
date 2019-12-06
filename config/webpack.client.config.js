@@ -8,7 +8,7 @@ const base = require('./webpack.base.config');
 
 module.exports = merge(base,{
   entry: {
-    client: path.resolve(__dirname, '../src/entry-client.js')
+    client: path.resolve(__dirname, '../public/entry-client.js')
   },
   module: {
     rules: [

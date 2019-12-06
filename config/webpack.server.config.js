@@ -13,8 +13,8 @@ module.exports = merge(base, {
    // 对 bundle renderer 提供 source map 支持
   devtool: '#source-map',
   entry: {
-    server: path.resolve(__dirname, '../src/entry-server.js')
-    //client: path.resolve(__dirname, '../src/entry-client.js')
+    server: path.resolve(__dirname, '../public/entry-server.js')
+    //client: path.resolve(__dirname, '../public/entry-client.js')
   },
   externals: [nodeExternals()],
   output: {

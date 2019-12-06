@@ -1,4 +1,4 @@
-import { createApp } from './main.js';
+import { createApp } from '../src/main.js';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css' //这个样式必须引入
 const { app,router,store } = createApp();

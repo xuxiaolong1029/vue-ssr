@@ -13,7 +13,7 @@ const urlList={
 const URL = urlList[process.env.NODE_ENV];
 module.exports ={
   mode: process.env.NODE_ENV,
-  entry: './src/entry-client.js',
+  entry: './public/entry-client.js',
   stats:{children:false},
   module: {
     rules: [
