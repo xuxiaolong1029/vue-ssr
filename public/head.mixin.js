@@ -23,10 +23,14 @@ const clientTitleMixin = {
     mounted () {
         const head = getHead(this);
         if (head) {
-            if(head.title) document.title = `CITEX Global | ${head.title}`;
-            if(head.author) document.querySelector('meta[name="author"]').setAttribute('content', head.author);
-            if(head.keywords) document.querySelector('meta[name="keywords"]').setAttribute('content',`CTT/BTC,CTT/ETH,CTT/USDT,CTT/KRW,CTT,Citex,citex,CITEX ${head.keywords}`);
-            if(head.description) document.querySelector('meta[name="description"]').setAttribute('content',`ITEX—全球首家立体生态型数字资产交易平台,${head.description}`);
+            try {
+                if(head.title) document.title = `CITEX Global | ${head.title}`;
+                if(head.author) document.querySelector('meta[name="author"]').setAttribute('content', head.author);
+                if(head.keywords) document.querySelector('meta[name="keywords"]').setAttribute('content',`CTT/BTC,CTT/ETH,CTT/USDT,CTT/KRW,CTT,Citex,citex,CITEX ${head.keywords}`);
+                if(head.description) document.querySelector('meta[name="description"]').setAttribute('content',`ITEX—全球首家立体生态型数字资产交易平台,${head.description}`);
+            }catch (e) {
+                console.log(e)
+            }
         }
     }
 };

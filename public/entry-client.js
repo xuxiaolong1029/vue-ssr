@@ -25,13 +25,13 @@ router.onReady(() => {
         }
         // 这里如果有加载指示器 (loading indicator)，就触发
         Promise.all(activated.map(c => {
-            NProgress.start()
+            NProgress.start();
             if (c.asyncData) {
                 return c.asyncData({ store, route: to })
             }
         })).then(() => {
             // 停止加载指示器(loading indicator)
-            NProgress.done()
+            NProgress.done();
             next()
         }).catch(next)
     });

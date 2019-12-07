@@ -22,7 +22,6 @@
     methods: {
       onHandleClick(){
         console.log(this.exchangeCoinsList);
-        alert('sss')
       }
     },
 
