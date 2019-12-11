@@ -2,6 +2,9 @@
     <div>
         首页
         <img src="../assets/img/img2.png" width="200" alt=""/>
+        <div class="bg">
+
+        </div>
     </div>
 </template>
 
@@ -19,5 +22,10 @@
 </script>
 
 <style scoped lang="less">
-
+.bg{
+    background: url('../assets/img/img2.png') no-repeat;
+    background-size: 200px 200px;
+    width: 200px;
+    height: 200px;
+}
 </style>
