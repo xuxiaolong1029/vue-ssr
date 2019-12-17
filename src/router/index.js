@@ -1,10 +1,10 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
-import Index from '../views/index.vue'
-import Login from '../views/login.vue'
-import Details from '../views/details.vue'
-import Person from '../views/person.vue'
+import Index from '../views/index'
+import Login from '../views/login'
+import Details from '../views/details'
+import Person from '../views/person'
 
 export default new VueRouter({
     mode: process.env.NODE_ENV==='production'?'history':'hash',
