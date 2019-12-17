@@ -1,4 +1,4 @@
-//对于vue项目的ssr改造
+//对于vue项目的ssr改造 测试代码
 import Vue from 'vue';
 import App from './App.vue';
 import './assets/reset.less';
