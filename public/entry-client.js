@@ -1,9 +1,6 @@
 import { createApp } from '../src/main';
-import '../src/assets/css/reset.less';
-import "../src/utils/element-config";
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css' //这个样式必须引入
-
 const { app,router,store } = createApp();
 if (window.__INITIAL_STATE__) {
     store.replaceState(window.__INITIAL_STATE__)

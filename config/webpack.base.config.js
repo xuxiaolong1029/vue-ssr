@@ -1,5 +1,8 @@
 const path = require('path');
 const {VueLoaderPlugin} = require('vue-loader');
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+const utils = require('./utils');
+const webpack = require('webpack');
 
 module.exports = {
     stats: { children: false },
@@ -15,14 +18,18 @@ module.exports = {
         extensions: ['*', '.js', '.vue','.jsx','.json']
     },
     module: {
+        noParse: /es6-promise\.js$/, // avoid webpack shimming process
         rules: [
             {
                 test: /\.js$/,
-                exclude: /node_modules/,
-                use: ["babel-loader"]
+                loader: 'babel-loader',
+                exclude: file => (
+                    /node_modules/.test(file) && !/\.vue\.js/.test(file)
+                )
             },{
                 test: /\.vue$/,
-                use: 'vue-loader'
+                use: 'vue-loader',
+                include: utils.resolve("src")
             },{
                 test: /\.(jpg|jpeg|png|gif|svg)$/,
                 loader: 'file-loader',
@@ -37,6 +44,7 @@ module.exports = {
     },
 
     plugins: [
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        new FriendlyErrorsPlugin()
     ]
 };

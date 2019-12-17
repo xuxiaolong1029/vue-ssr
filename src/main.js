@@ -6,7 +6,13 @@ import router from './router';
 import {sync} from 'vuex-router-sync' // 把当VueRouter状态同步到Vuex中
 import headMixin from '../public/head.mixin'
 Vue.mixin(headMixin);
-
+import '../src/assets/css/reset.less';
+import "../src/utils/element-config";
+if(process.env.VUE_ENV === 'client'){
+ /* const ElementUI = require('element-ui');*/
+  require('element-ui/lib/theme-chalk/index.css');
+  //Vue.use(ElementUI)
+}
 import VueClipboard from "vue-clipboard2";
 Vue.use(VueClipboard);
 

@@ -8,7 +8,7 @@ function createStore() {
     state: {
       bar: '',
       exchangeCoinsList:[],
-      pageHeight:document.documentElement.clientHeight,
+      //pageHeight:document.documentElement.clientHeight,
     },
 
     mutations: {

@@ -43,6 +43,7 @@ ssrApp.use(ssrRouter.routes()).use(ssrRouter.allowedMethods());
 ssrApp.listen(1001, () => {
   console.log('服务器端渲染地址： http://localhost:1001');
 });
+
 if(process.env.NODE_ENV!=='production'){
   const clientApp = new Koa();
   const clientRouter = new Router();
