@@ -31,7 +31,9 @@ module.exports = merge(base,{
     }),
     new HtmlWebpackPlugin({
       minify: {
+        removeComments: true,
         collapseWhitespace: true,//删除空格、换行
+        removeAttributeQuotes: true
       },
       template: path.resolve(__dirname, process.env.NODE_ENV!=='production'?'../public/index.html':'../public/index.ssr.html'),
       filename: process.env.NODE_ENV!=='production'?'index.html':'index.ssr.html'

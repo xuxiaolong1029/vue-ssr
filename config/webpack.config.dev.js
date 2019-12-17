@@ -1,9 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const OpenBrowserPlugin = require('open-browser-webpack-plugin'); //自动打开浏览器插件
+const base = require('./webpack.base.config');
+const merge = require('webpack-merge');
+
 const urlList={
   development:'http://10.1.1.61:8090',
   production:'https://www.citex.co.kr',
@@ -11,49 +11,17 @@ const urlList={
 };
 
 const URL = urlList[process.env.NODE_ENV];
-module.exports ={
-  mode: process.env.NODE_ENV,
-  entry: './public/entry-client.js',
-  stats:{children:false},
+module.exports = merge(base,{
+  entry:{
+    path:path.join(__dirname,'../public/entry-client.js'),
+  },
   module: {
     rules: [
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: ["babel-loader"]
-      },{
         test: /\.(less|css)$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: ['css-loader', 'less-loader']
-        })
-       // use: ['vue-style-loader', 'css-loader','less-loader','postcss-loader']
-      },{
-        test: /\.(jpg|jpeg|png|gif|svg)$/,
-        use: {
-          loader: 'url-loader',
-          options: {
-            limit: 10000    // 10Kb
-          }
-        }
-      },{
-        test: /\.vue$/,
-        use: 'vue-loader'
+        use: ['vue-style-loader',{loader: 'css-loader'},'less-loader', 'postcss-loader']
       }
     ]
-  },
-  resolve: {
-    extensions: [
-      '.js', '.vue', '.json'
-    ],
-    alias: {
-      'vue$': 'vue/dist/vue.esm.js'
-    }
-  },
-  output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-    publicPath:'/'
   },
   devServer:{
     contentBase: path.join(__dirname, "src"),
@@ -82,16 +50,18 @@ module.exports ={
     }
   },
   plugins: [
-    new VueLoaderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new HtmlWebpackPlugin({
-      template: './public/index.html',
-      favicon: './public/icon.ico'
-    }),
-    new ExtractTextPlugin("styles.css"),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV':JSON.stringify(process.env.NODE_ENV || 'development'),
       'process.env.VUE_ENV': '"client"'
+    }),
+    new HtmlWebpackPlugin({
+      template:'./public/index.html',
+      favicon: './public/icon.ico',
+      inject: 'body',
+      minify: {
+        removeComments: true
+      }
     })
   ]
-};
+});

@@ -6,7 +6,7 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --hot",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.config.dev.js --inline",
     "pre": "cross-env NODE_ENV=prepare webpack-dev-server --hot",
     "prod": "cross-env NODE_ENV=production webpack-dev-server --hot",
     "start": "cross-env NODE_ENV=production nodemon server/server.js",
@@ -28,6 +28,7 @@
     "@babel/core": "^7.7.2",
     "@babel/preset-env": "^7.7.1",
     "autoprefixer": "^9.7.2",
+    "element-ui": "^2.13.0",
     "axios": "^0.19.0",
     "babel-loader": "^8.0.6",
     "babel-plugin-component": "^1.1.1",

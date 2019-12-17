@@ -8,6 +8,11 @@ import {sync} from 'vuex-router-sync' // 把当VueRouter状态同步到Vuex中
 import headMixin from '../public/head.mixin'
 Vue.mixin(headMixin);
 
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+Vue.use(ElementUI);
+
+
 export function createApp() {
   const store = createStore();
   //const router = createRouter();
