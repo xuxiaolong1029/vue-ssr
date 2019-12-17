@@ -1,4 +1,4 @@
-import { createApp } from '../src/main.js';
+import { createApp } from '../src/main';
 
 export default context => {
   return new Promise((resolve, reject) => {

@@ -1,10 +1,15 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
-import Index from '../views/index'
+import Home from '../views/home'
+import NotFound from '../views/404'
+//登录
 import Login from '../views/login'
-import Details from '../views/details'
-import Person from '../views/person'
+import Verify from '../views/verify'
+//内容页面
+import Index from '../views/index'
+import Order from '../views/order'
+import Setting from '../views/setting'
 
 export default new VueRouter({
     mode: process.env.NODE_ENV==='production'?'history':'hash',
@@ -12,17 +17,51 @@ export default new VueRouter({
     base: __dirname,
     routes:[
         {
-            path:'/',
-            component:Index
+            path: '/',
+            component: Home,
+            redirect:'/index',
+            name: '公共',
+            children: [
+                {
+                    path: '/index',
+                    index:'1',
+                    icon:'el-icon-s-home',
+                    component:Index,
+                    name: '首页'
+                },
+                {
+                    path: '/order',
+                    index:'2',
+                    icon:'el-icon-s-order',
+                    component:Order,
+                    name: '我的订单'
+                },
+                {
+                    path: '/setting',
+                    index:'3',
+                    icon:'el-icon-setting',
+                    component:Setting,
+                    name: '交易设置'
+                }
+            ]
         },{
             path:'/login',
+            name:'Login',
             component:Login
         },{
-            path: '/details',
-            component:Details
+            path:'/verify',
+            name:'verify',
+            component:Verify
         },{
-            path: '/person',
-            component:Person
+            path: '*',
+            component: NotFound,
+            name: '网络出错',
+            hidden: true
+        }, {
+            path: '*',
+            component: NotFound,
+            hidden: true,
+            redirect: { path: '/404' }
         }
     ]
 });

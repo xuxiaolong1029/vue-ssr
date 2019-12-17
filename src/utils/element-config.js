@@ -1,0 +1,61 @@
+//动态按需加载
+import Vue from "vue";
+import{
+    Button,
+    Select,
+    Option,
+    Switch,
+    Form,
+    FormItem,
+    Input,
+    Message,
+    Icon,
+    Menu,
+    MenuItem,
+    Dialog,
+    Dropdown,
+    DropdownMenu,
+    DropdownItem,
+    Card,
+    Table,
+    TableColumn,
+    DatePicker,
+    Tabs,
+    TabPane,
+    MessageBox,
+    Slider,
+    Checkbox,
+    CheckboxButton,
+    CheckboxGroup,
+    InputNumber,
+    Badge
+} from "element-ui"
+Vue.use(Badge);
+Vue.use(InputNumber);
+Vue.use(Checkbox);
+Vue.use(CheckboxButton);
+Vue.use(CheckboxGroup);
+Vue.use(Slider);
+Vue.use(Tabs);
+Vue.use(TabPane);
+Vue.use(DatePicker);
+Vue.use(Switch);
+Vue.use(Table);
+Vue.use(TableColumn);
+Vue.use(Dialog);
+Vue.use(Button);
+Vue.use(Select);
+Vue.use(Option);
+Vue.use(Form);
+Vue.use(FormItem);
+Vue.use(Input);
+Vue.use(Icon);
+Vue.use(Menu);
+Vue.use(MenuItem);
+Vue.use(Dropdown);
+Vue.use(DropdownMenu);
+Vue.use(Card);
+Vue.use(DropdownItem);
+
+Vue.prototype.$message = Message;
+Vue.prototype.$confirm = MessageBox.confirm;

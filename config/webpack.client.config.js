@@ -5,7 +5,9 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueSSRClientPlugin = require('vue-server-renderer/client-plugin');
 const base = require('./webpack.base.config');
-
+const MiniCssExtractPlugin =require('mini-css-extract-plugin');
+const utils = require('./utils');
+const isProd = process.env.NODE_ENV === 'production';
 module.exports = merge(base,{
   entry: {
     client: path.resolve(__dirname, '../public/entry-client.js')
@@ -13,12 +15,27 @@ module.exports = merge(base,{
   module: {
     rules: [
       {
-        test: /\.(css|less)$/,
-        use: ['vue-style-loader', 'css-loader','less-loader', 'postcss-loader']
+        test: /\.(less|css)$/,
+        use: [
+          isProd ? MiniCssExtractPlugin.loader : 'vue-style-loader', {loader: 'css-loader'}, 'less-loader',
+        ]
+      },{
+        test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
+        loader: 'url-loader',
+        options: {
+          esModule:false,
+          limit: 10000,
+          publicPath: '../',
+          name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
+        }
       }
     ]
   },
   plugins: [
+    new MiniCssExtractPlugin({
+      filename: isProd ? 'assets/[name].[chunkhash].css' : 'assets/[name].css',
+      chunkFilename: isProd ? 'assets/[id].[chunkhash].css': 'assets/[id].css'
+    }),
     new CleanWebpackPlugin(),
     new VueSSRClientPlugin(),
     new webpack.DefinePlugin({

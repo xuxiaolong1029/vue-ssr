@@ -7,7 +7,8 @@ function createStore() {
   const store = new Vuex.Store({
     state: {
       bar: '',
-      exchangeCoinsList:[]
+      exchangeCoinsList:[],
+      pageHeight:document.documentElement.clientHeight,
     },
 
     mutations: {

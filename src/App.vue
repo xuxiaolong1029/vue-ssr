@@ -1,18 +1,17 @@
 <template>
-  <div id="app">
-    <div class="menu">
-      <ul>
-        <router-link tag="li" v-for="(item,index) in menu" :key="index" :to="item.path">{{item.name}}</router-link>
-      </ul>
-    </div>
-    <div class="page">
-      <router-view></router-view>
-    </div>
+  <div :style="{ height: pageHeight + 'px'}">
+    <router-view/>
   </div>
 </template>
 
 <script>
+  import { mapState } from "vuex";
   export default {
+    computed: {
+      ...mapState([
+        "pageHeight",
+      ])
+    },
     data(){
       return{
         menu:[

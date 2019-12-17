@@ -1,12 +1,14 @@
 //对于vue项目的ssr改造 测试代码
 import Vue from 'vue';
 import App from './App.vue';
-import './assets/reset.less';
-import createStore from './store/store';
+import createStore from './store';
 import router from './router';
 import {sync} from 'vuex-router-sync' // 把当VueRouter状态同步到Vuex中
 import headMixin from '../public/head.mixin'
 Vue.mixin(headMixin);
+
+import VueClipboard from "vue-clipboard2";
+Vue.use(VueClipboard);
 
 export function createApp() {
   const store = createStore();

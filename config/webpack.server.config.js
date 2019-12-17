@@ -5,7 +5,7 @@ const nodeExternals = require('webpack-node-externals');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueSSRServerPlugin = require('vue-server-renderer/server-plugin');
 const base = require('./webpack.base.config');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = merge(base, {
@@ -14,7 +14,6 @@ module.exports = merge(base, {
   devtool: '#source-map',
   entry: {
     server: path.resolve(__dirname, '../public/entry-server.js')
-    //client: path.resolve(__dirname, '../public/entry-client.js')
   },
   externals: [nodeExternals()],
   output: {
@@ -23,16 +22,16 @@ module.exports = merge(base, {
   module: {
     rules: [
       {
-        test: /\.(less|css)$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: ['css-loader', 'less-loader']
-        })
+        test: /\.(css|less)$/,
+        use: ['vue-style-loader',{loader: 'css-loader'},'less-loader', 'postcss-loader']
+      },{
+        test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
+        loader: 'url-loader'
       }
     ]
   },
   plugins: [
-    new ExtractTextPlugin('assets/style.css'),
+
     new VueSSRServerPlugin(),   // 这个要放到第一个写，否则 CopyWebpackPlugin 不起作用，原因还没查清楚
     new webpack.DefinePlugin({
       'process.env.NODE_ENV':JSON.stringify(process.env.NODE_ENV || 'production'),
