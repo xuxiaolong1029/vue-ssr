@@ -4,7 +4,10 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 module.exports = {
   mode: process.env.NODE_ENV,
   resolve: {
-    extensions: ['.js', '.vue']
+    alias:{
+      'vue$':'vue/dist/vue.esm.js'//配置别名 确保webpack可以找到.vue文件
+    },
+    extensions: ['*', '.js', '.vue','.jsx','.json']
   },
   stats: { children: false },
   output: {
