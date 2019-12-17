@@ -5,6 +5,7 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueSSRClientPlugin = require('vue-server-renderer/client-plugin');
 const base = require('./webpack.base.config');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = merge(base,{
   entry: {
@@ -13,12 +14,15 @@ module.exports = merge(base,{
   module: {
     rules: [
       {
-        test: /\.(css|less)$/,
-        use: ['vue-style-loader', 'css-loader','less-loader', 'postcss-loader']
+        test: /\.(less|css)$/,
+        use:[
+          {loader:MiniCssExtractPlugin.loader},'css-loader', 'less-loader'
+      ]
       }
     ]
   },
   plugins: [
+    new MiniCssExtractPlugin({filename:'assets/[hash].css'}),
     new CleanWebpackPlugin(),
     new VueSSRClientPlugin(),
     new webpack.DefinePlugin({
@@ -26,6 +30,9 @@ module.exports = merge(base,{
       'process.env.VUE_ENV': '"client"'
     }),
     new HtmlWebpackPlugin({
+      minify: {
+        collapseWhitespace: true,//删除空格、换行
+      },
       template: path.resolve(__dirname, process.env.NODE_ENV!=='production'?'../public/index.html':'../public/index.ssr.html'),
       filename: process.env.NODE_ENV!=='production'?'index.html':'index.ssr.html'
     })
