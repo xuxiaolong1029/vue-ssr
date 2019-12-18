@@ -17,7 +17,7 @@ module.exports = merge(base,{
         test: /\.(less|css)$/,
         use:[
           {loader:MiniCssExtractPlugin.loader},'css-loader', 'less-loader'
-      ]
+        ]
       }
     ]
   },

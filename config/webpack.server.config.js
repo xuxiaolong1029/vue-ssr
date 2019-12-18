@@ -24,7 +24,7 @@ module.exports = merge(base, {
     rules: [
       {
         test: /\.(css|less)$/,
-        use: ['vue-style-loader', 'css-loader','less-loader', 'postcss-loader']
+        loader: ['vue-style-loader', 'css-loader','less-loader', 'postcss-loader']
       }
     ]
   },
