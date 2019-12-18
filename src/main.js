@@ -9,9 +9,7 @@ Vue.mixin(headMixin);
 import '../src/assets/css/reset.less';
 import "../src/utils/element-config";
 if(process.env.VUE_ENV === 'client'){
- /* const ElementUI = require('element-ui');*/
   require('element-ui/lib/theme-chalk/index.css');
-  //Vue.use(ElementUI)
 }
 import VueClipboard from "vue-clipboard2";
 Vue.use(VueClipboard);

@@ -33,8 +33,8 @@ module.exports = merge(base,{
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: isProd ? 'assets/[name].[chunkhash].css' : 'assets/[name].css',
-      chunkFilename: isProd ? 'assets/[id].[chunkhash].css': 'assets/[id].css'
+      filename: isProd ? 'assets/css/[name].[chunkhash].css' : 'assets/css/[name].css',
+      chunkFilename: isProd ? 'assets/css/[id].[chunkhash].css': 'assets/css/[id].css'
     }),
     new CleanWebpackPlugin(),
     new VueSSRClientPlugin(),

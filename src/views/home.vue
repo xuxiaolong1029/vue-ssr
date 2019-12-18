@@ -35,6 +35,7 @@
             </div>
             <p class="breadcrumb">
                 当前位置：<span>{{routers[Number(active)-1].name}}</span>
+                <button @click="alertClick()">触发</button>
             </p>
             <div class="page-router" :style="{height:(pageHeight-128)+'px'}">
                 <transition name="fade" mode="out-in">
@@ -60,14 +61,18 @@
                 isCollapse:false,
                 routers:this.$router.options.routes[0].children,
                 userName:'',
-                pageHeight:''
+                pageHeight:0
             }
         },
         mounted() {
             this.getActive(this.$route.path);
-            this.pageHeight=document.documentElement.clientHeight
+            console.log(document.documentElement.clientHeight);
+            this.pageHeight = document.documentElement.clientHeight
         },
         methods: {
+            alertClick(){
+              alert('ddd')
+            },
             getActive(val){
                 let obj = this.routers.find(v=>v.path===val);
                 this.active = obj.index;

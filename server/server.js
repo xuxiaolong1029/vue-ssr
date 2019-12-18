@@ -4,6 +4,7 @@ const static = require('koa-static');
 const path = require('path');
 const fs = require('fs');
 const favicon = require('koa-favicon');
+
 const createBundleRenderer = require('vue-server-renderer').createBundleRenderer;
 const {proxy,proxyTable} = require('./proxy');//引入代理
 const ssrApp = new Koa();
