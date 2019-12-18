@@ -1,3 +1,7 @@
+import Vue from 'vue';
+import ElementUI from "element-ui";
+import "element-ui/lib/theme-chalk/index.css";
+Vue.use(ElementUI);
 import { createApp } from '../src/main.js';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css' //这个样式必须引入

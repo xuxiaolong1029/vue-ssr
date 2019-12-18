@@ -22,9 +22,7 @@
           {path:'/login',name:'登录'}
         ]
       }
-    },
-    mounted(){}
-
+    }
   }
 </script>
 <style scoped lang="less">

@@ -6,7 +6,6 @@ import router from './router';
 import {sync} from 'vuex-router-sync' // 把当VueRouter状态同步到Vuex中
 import headMixin from '../public/head.mixin'
 Vue.mixin(headMixin);
-
 export function createApp() {
   const store = createStore();
   //const router = createRouter();
