@@ -43,22 +43,3 @@ ssrApp.use(ssrRouter.routes()).use(ssrRouter.allowedMethods());
 ssrApp.listen(1001, () => {
   console.log('服务器端渲染地址： http://localhost:1001');
 });
-if(process.env.NODE_ENV!=='production'){
-  const clientApp = new Koa();
-  const clientRouter = new Router();
-  // 前端Server
-  const clientTemplate = fs.readFileSync(path.resolve(__dirname, '../dist/index.html'), 'utf-8');
-  clientApp.use(favicon(path.resolve(__dirname, '../public/icon.ico')));
-  clientApp.use(static(path.resolve(__dirname, '../dist')));
-  clientRouter.get('*', (ctx, next) => {
-    ctx.type = 'html';
-    ctx.status = 200;
-    ctx.body = clientTemplate;
-  });
-  clientApp.use(clientRouter.routes()).use(clientRouter.allowedMethods());
-
-  clientApp.listen(9001, () => {
-    console.log('浏览器端渲染地址： http://localhost:9001');
-  });
-}
-

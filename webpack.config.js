@@ -2,8 +2,6 @@ const path = require('path');
 const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const OpenBrowserPlugin = require('open-browser-webpack-plugin'); //自动打开浏览器插件
 const urlList={
   development:'http://10.1.1.61:8090',
   production:'https://www.citex.co.kr',
@@ -23,11 +21,7 @@ module.exports ={
         use: ["babel-loader"]
       },{
         test: /\.(less|css)$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: ['css-loader', 'less-loader']
-        })
-       // use: ['vue-style-loader', 'css-loader','less-loader','postcss-loader']
+        use: ['vue-style-loader', 'css-loader','less-loader','postcss-loader']
       },{
         test: /\.(jpg|jpeg|png|gif|svg)$/,
         use: {
@@ -39,6 +33,9 @@ module.exports ={
       },{
         test: /\.vue$/,
         use: 'vue-loader'
+      },{
+        test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
+        loader: 'file-loader'
       }
     ]
   },
@@ -88,7 +85,6 @@ module.exports ={
       template: './public/index.html',
       favicon: './public/icon.ico'
     }),
-    new ExtractTextPlugin("styles.css"),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV':JSON.stringify(process.env.NODE_ENV || 'development'),
       'process.env.VUE_ENV': '"client"'
