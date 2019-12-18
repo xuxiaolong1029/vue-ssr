@@ -19,6 +19,7 @@
           {path:'/',name:'首页'},
           {path:'/details',name:'详情'},
           {path:'/person',name:'个人中心'},
+          {path:'/from',name:'表单'},
           {path:'/login',name:'登录'}
         ]
       }

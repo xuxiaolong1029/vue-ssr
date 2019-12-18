@@ -5,6 +5,7 @@ import Index from '../views/index'
 import Login from '../views/login'
 import Details from '../views/details'
 import Person from '../views/person'
+import From from '../views/from'
 
 export default new VueRouter({
     mode: process.env.NODE_ENV==='production'?'history':'hash',
@@ -23,6 +24,9 @@ export default new VueRouter({
         },{
             path: '/person',
             component:Person
+        },{
+            path: '/from',
+            component:From
         }
     ]
 });
