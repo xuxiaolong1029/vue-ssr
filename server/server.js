@@ -23,6 +23,7 @@ ssrApp.use(static(path.resolve(__dirname, '../dist')));
 ssrRouter.get('*', (ctx, next) => {
   const context = {
     title: 'ssr-vue',
+    author:'徐小笼',
     keywords: '服务端渲染',
     description: '关于vue服务端渲染',
     url: ctx.url

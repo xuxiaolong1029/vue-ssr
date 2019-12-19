@@ -1,10 +1,8 @@
-import Vue from 'vue';
-import ElementUI from "element-ui";
-import "element-ui/lib/theme-chalk/index.css";
-Vue.use(ElementUI);
 import { createApp } from '../src/main.js';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css' //这个样式必须引入
+import 'element-ui/lib/theme-chalk/index.css';
+import "../src/utils/element-config"
 const { app,router,store } = createApp();
 if (window.__INITIAL_STATE__) {
     store.replaceState(window.__INITIAL_STATE__)
