@@ -1,22 +1,21 @@
 const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 module.exports = {
+  stats: { children: false },
   mode: process.env.NODE_ENV,
+  output: {
+    path: path.resolve(__dirname, '../dist'),
+    filename: 'bundle.js'
+  },
   resolve: {
     alias:{
       'vue$':'vue/dist/vue.esm.js'//配置别名 确保webpack可以找到.vue文件
     },
     extensions: ['*', '.js', '.vue','.jsx','.json']
   },
-  stats: { children: false },
-  output: {
-    path: path.resolve(__dirname, '../dist'),
-    publicPath: '/',
-    filename: '[name].bundle.js'
-  },
-
   module: {
+    noParse: /es6-promise\.js$/,
     rules: [
       {
         test: /\.vue$/,
@@ -24,6 +23,7 @@ module.exports = {
       },
       {
         test: /\.js$/,
+        exclude: /node_modules/,
         use: 'babel-loader'
       },
       {
@@ -43,6 +43,7 @@ module.exports = {
   },
 
   plugins: [
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new FriendlyErrorsPlugin()
   ]
 };
