@@ -5,11 +5,11 @@ const URL = require('./env');
 const proxy = function (vm, options) {
     if (typeof options === 'string') {
         options = {
-        target: options
+          target: options
         }
     }
     return async function (ctx, next) {
-        await koaConnect(httpProxyMiddleware(vm, options))(ctx, next)
+      await koaConnect(httpProxyMiddleware(vm, options))(ctx, next)
     }
 };
 // 代理配置
